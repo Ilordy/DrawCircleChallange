@@ -1,0 +1,28 @@
+I will be explaing the things I find, fix, and document in this note as well as 
+script classes will have some comments in them.
+
+-No play button UI or cube primitive was initially given as part of this project, so I made my own.
+
+-Added some design and extra materials as well to make it look more pleasing.
+
+-Added some textmeshpro GUI to display a cube's transform values.
+
+-Added a CubeController class for handling cube movement.
+
+-Added a Utils class which has a Lerp function mimicing the regular Unity Mathf.Lerp function.
+
+-The DrawCircle class had a good amount of problems I will be noting here: 
+--In the Start Method, DrawCenterAtPosition was being called wrong as the circlePosition vector variable was incorrectly 
+typed and a float argument for the radius was not given, causing compile errors.
+--The markerPrefab was not referenced via the inspector causing errors when clicking play in Unity, so I made a prefab and 
+added it to the missing reference.
+--Instead of using Mathf.Tan for the x position of the MarkerPrefab we should use Mathf.Cos if we want to correctly place an object's x position 
+on a circle with radius r.
+--Using only theta <= PI in the for loop we only get half of a circle drawn due to miscalculation of the circumfrence of a circle. I changed this to being
+theta <= circumfrence, the circumfrence of a circle being 2 * PI * radius giving us a full perfect circle.
+--In most cases, using the SerializedField Attribute that unity provides is much better programming practice than making all the variables public only to reference them
+in the inspector. Unless another class will use these properties, it's best if we do not set them as public but as a private SerializedField Instead. I have
+changed all public variables to SerializedFields.
+--It's a common programming style to use camel casing when making member variables or hungarian notation, example: markerPrefab, m_markerPrefab. I have changed
+all member variables to use this notation.
+--Cleaned up the code a bit and added some comments.

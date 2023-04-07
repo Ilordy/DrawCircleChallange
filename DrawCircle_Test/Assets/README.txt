@@ -1,0 +1,1 @@
+The DrawCircle application functionality is very simple.  It contains a script which, on Start, is supposed to spawn objects at all 360 degrees of a circle given a supplied position and radius.  There are several problems with the application in its current state.  Document these problems, apply a fix, and explain what the problem was and how you resolved it.
